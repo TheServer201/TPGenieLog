@@ -59,32 +59,30 @@ public class RomanNumber extends Number implements Comparable<RomanNumber> {
 	public static int fromRoman(String input) {
 		assert(keys.length == 13 && values.length == 13);
 		var result = 0;
-		var count = 0;
 		var inputIndex = 0;
 		for (var mapIndex = 0; mapIndex < 13; mapIndex++) {
-			boolean modFour = (mapIndex & 3) == 0;
-			if (modFour) {
-				if (count >= 2) {
-					throw new IllegalArgumentException("roman doesn't match the regex");
-				}
-				count = 0;
-			}
 			var key = keys[mapIndex];
 			var value = values[mapIndex];
 			var valueLength = value.length();
+			var count = 0;
 			while (input.startsWith(value, inputIndex)) {
 				result += key;
 				inputIndex += valueLength;
 				count++;
 			}
-			if (modFour) {
-				if (count >= 4) {
+			var mapMod = mapIndex & 3;
+			if (mapMod != 0 && count != 0) {
+				if (count >= 2) {
 					throw new IllegalArgumentException("roman doesn't match the regex");
 				}
-				count = 0;
+				if (mapMod <= 2) {
+					mapIndex |= 3;
+				}			
+			} else if (count >= 4) {
+				throw new IllegalArgumentException("roman doesn't match the regex");
 			}
 		}
-		if (inputIndex < input.length() || count >= 2) {
+		if (inputIndex < input.length()) {
 			throw new IllegalArgumentException("roman doesn't match the regex");
 		}
 		return result;
