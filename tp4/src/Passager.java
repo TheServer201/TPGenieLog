@@ -9,6 +9,6 @@ public class Passager {
 
 	@Override
 	public String toString() {
-		return "( nom: " nom + ", contact: " + contact + " )";
+		return "( nom: " + nom + ", contact: " + contact + " )";
 	}
 }

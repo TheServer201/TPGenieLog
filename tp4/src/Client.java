@@ -13,6 +13,6 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "( nom: " nom + ", paiement: " + paiement + ", contact: " + contact + ", reference: " + reference + " )";
+		return "( nom: " + nom + ", paiement: " + paiement + ", contact: " + contact + ", reference: " + reference + " )";
 	}
 }
