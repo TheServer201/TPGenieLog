@@ -15,7 +15,7 @@ public class Vol {
 	}
 	
 	public Duration duree() {
-		return Duration(depart, arrivee);
+		return Duration.between(depart, arrivee);
 	}
 	
 	public void ouvrir() {

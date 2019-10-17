@@ -5,7 +5,7 @@ public class Client {
 	private String reference;
 	
 	public Client (String unNom, String unPaiement, String unContact, String uneReference) {
-		nom = unNom:
+		nom = unNom;
 		paiement = unPaiement;
 		contact = unContact;
 		reference = uneReference;
